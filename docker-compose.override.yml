@@ -1,0 +1,44 @@
+services:
+  grossary.api:
+    image: ${DOCKER_REGISTRY-}grossaryapi
+    build:
+      context: ./Grossary.Api
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Data Source=mssql,1433;Database=GrossaryDb;User ID=sa;Password=Password1!;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False;
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    ports:
+      - "8080"
+      - "8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password1!"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+
+  elasticsearch:
+    image: elasticsearch:8.0.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+
+volumes:
+  myvolume:
+
