@@ -38,3 +38,9 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Grossary.Api.dll"]
+
+USER root
+COPY ["Grossary.Api/localhost.pfx", "/app"]
+COPY ["Grossary.Api/localhost.crt", "/usr/local/share/ca-certificates"]
+RUN update-ca-certificates
+RUN cat /etc/ssl/certs/localhost.pem
