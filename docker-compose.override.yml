@@ -2,8 +2,8 @@ services:
   grossary.api:
     image: ${DOCKER_REGISTRY-}grossaryapi
     build:
-      context: ./Grossary.Api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Grossary.Api/Dockerfile
     environment:
       - ConnectionStrings__DefaultConnection=Data Source=mssql,1433;Database=GrossaryDb;User ID=sa;Password=Password1!;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False;
       - ASPNETCORE_ENVIRONMENT=Development
@@ -12,9 +12,7 @@ services:
     ports:
       - "8080"
       - "8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
   mssql:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
