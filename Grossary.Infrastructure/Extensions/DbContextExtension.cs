@@ -11,22 +11,19 @@ namespace Grossary.Infrastructure.Extensions
 			{
 				var vendorA = new Vendor()
 				{
-					Id = Guid.NewGuid(),
 					ImageUri = "https://images.fallout.wiki/e/ea/Super_Duper_Mart_Logo.png",
 					Name = "Super Duper Mart"
 				};
 
 				var vendorB = new Vendor()
 				{
-					Id = Guid.NewGuid(),
 					ImageUri = "https://images.fallout.wiki/thumb/c/c3/Decal_redrocket02.webp/499px-Decal_redrocket02.webp.png",
 					Name = "Red Rocket"
 				};
 
 				var productA = new Product()
 				{
-					Id = Guid.NewGuid(),
-					Barcode = 0,
+					Barcode = "0",
 					CreatedAt = DateTime.Now,
 					ImageUri = "https://images.fallout.wiki/thumb/d/d7/Fallout4_Sugar_Bombs.png/722px-Fallout4_Sugar_Bombs.png",
 					LastUpdatedAt = DateTime.Now,
@@ -37,8 +34,7 @@ namespace Grossary.Infrastructure.Extensions
 
 				var productB = new Product()
 				{
-					Id = Guid.NewGuid(),
-					Barcode = 1,
+					Barcode = "1",
 					CreatedAt = DateTime.Now,
 					ImageUri = "https://images.fallout.wiki/thumb/a/a4/Nukacoladecal01_d.webp/1024px-Nukacoladecal01_d.webp.png",
 					LastUpdatedAt = DateTime.Now,

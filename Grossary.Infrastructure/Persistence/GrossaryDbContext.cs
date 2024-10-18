@@ -1,4 +1,5 @@
-﻿using Grossary.Core.Entities;
+﻿using System.Reflection;
+using Grossary.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Grossary.Infrastructure.Persistence
@@ -10,5 +11,10 @@ namespace Grossary.Infrastructure.Persistence
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Vendor> Vendors { get; set; }
 		public DbSet<ProductRelationship> ProductRelationships { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			 modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+		}
 	}
 }

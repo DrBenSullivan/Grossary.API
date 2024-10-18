@@ -4,6 +4,7 @@ using Grossary.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Grossary.Infrastructure.Migrations
 {
     [DbContext(typeof(GrossaryDbContext))]
-    partial class GrossaryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241018113831_Add Relationships and navprops")]
+    partial class AddRelationshipsandnavprops
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

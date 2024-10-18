@@ -1,6 +1,6 @@
 ﻿namespace Grossary.Core.Enums
 {
-	public enum ProductRelationshipType
+	public enum ProductComparator
 	{
 		UpSell,
 		CrossSell,

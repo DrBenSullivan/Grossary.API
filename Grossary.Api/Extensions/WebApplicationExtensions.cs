@@ -6,7 +6,7 @@ namespace Grossary.Api.Extensions
 {
 	internal static class WebApplicationExtensions
 	{
-		internal static async Task<WebApplication> ConfigureDatabase(this WebApplication app) 
+		internal static async Task<WebApplication> ConfigureDatabase(this WebApplication app)
 		{
 			using var scope = app.Services.CreateScope();
 			var db = scope.ServiceProvider.GetRequiredService<GrossaryDbContext>();

@@ -1,33 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Grossary.Core.Enums;
+﻿using Grossary.Core.Enums;
 
 namespace Grossary.Core.Entities
 {
 	public class ProductRelationship
 	{
-		[Key]
-		public Guid Id { get; private set; }
-
-		[Required]
-		[ForeignKey("SourceProduct")]
+		public Guid Id { get; } = Guid.NewGuid();
 		public Guid SourceProductId { get; private set; }
-
-		[Required]
-		[ForeignKey("TargetProduct")]
 		public Guid TargetProductId { get; private set; }
-
-		[Required]
-		public ProductRelationshipType Relationship { get; private set; }
-
-		[Required]
-		public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
-
-
-		// Navigation Properties
-		public virtual Product SourceProduct { get; set; } = null!;
-
-		public virtual Product TargetProduct { get; set; } = null!;
+		public ProductComparator Relationship { get; private set; }
+		public DateTime CreatedAt { get; private set; } = DateTime.Now;
+		public virtual Product SourceProduct { get; set; }
+		public virtual Product TargetProduct { get; set; }
 
 	}
 }

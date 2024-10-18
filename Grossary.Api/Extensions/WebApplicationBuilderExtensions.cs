@@ -5,7 +5,7 @@ namespace Grossary.Api.Extensions
 {
 	internal static class WebApplicationBuilderExtensions
 	{
-		internal static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder) 
+		internal static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
 		{
 			builder.Services.AddControllers();
 			builder.Services.AddEndpointsApiExplorer();
