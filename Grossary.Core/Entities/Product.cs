@@ -3,8 +3,8 @@
 	public class Product
 	{
 		public Guid Id { get; } = Guid.NewGuid();
-		public string Barcode { get; set; }
-		public string Name { get; set; }
+		public required string Barcode { get; set; }
+		public required string Name { get; set; }
 		public double Price { get; set; }
 		public string? ImageUri { get; set; }
 		public DateTime CreatedAt { get; set; }
@@ -14,6 +14,6 @@
 		public Guid VendorId { get; set; }
 
 		// Navigation properties.
-		public virtual Vendor Vendor { get; set; }
+		public required virtual Vendor Vendor { get; set; }
 	}
 }

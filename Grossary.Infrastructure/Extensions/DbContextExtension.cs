@@ -29,7 +29,8 @@ namespace Grossary.Infrastructure.Extensions
 					LastUpdatedAt = DateTime.Now,
 					Name = "Sugar Bombs",
 					Price = 3.99,
-					VendorId = vendorA.Id
+					VendorId = vendorA.Id,
+					Vendor = vendorA
 				};
 
 				var productB = new Product()
@@ -40,7 +41,8 @@ namespace Grossary.Infrastructure.Extensions
 					LastUpdatedAt = DateTime.Now,
 					Name = "Nuka-Cola",
 					Price = 1.49,
-					VendorId = vendorB.Id
+					VendorId = vendorB.Id,
+					Vendor = vendorB
 				};
 
 				await context.Products.AddRangeAsync(productA, productB);

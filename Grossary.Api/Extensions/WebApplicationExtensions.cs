@@ -1,6 +1,7 @@
 ﻿using Grossary.Infrastructure.Extensions;
 using Grossary.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace Grossary.Api.Extensions
 {
@@ -10,8 +11,13 @@ namespace Grossary.Api.Extensions
 		{
 			using var scope = app.Services.CreateScope();
 			var db = scope.ServiceProvider.GetRequiredService<GrossaryDbContext>();
-			db.Database.Migrate();
-			await db.SeedAsync();
+			
+			try {
+				db.Database.Migrate();
+				await db.SeedAsync();
+			} catch (SqlException exc) {
+				return app;
+			}
 			return app;
 		}
 

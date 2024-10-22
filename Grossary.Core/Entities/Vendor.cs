@@ -3,8 +3,8 @@
 	public class Vendor
 	{
 		public Guid Id { get; } = Guid.NewGuid();
-		public string Name { get; set; }
-		public string ImageUri { get; set; }
+		public required string Name { get; set; }
+		public required string ImageUri { get; set; }
 
 
 		// Navigation properties.
